@@ -1,22 +1,30 @@
-name: Github Page Deploy Workflow
+name: Deploy React Application
 
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  deploy:
+  build_test:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x] # We will deploy with only one version of node
+
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
         with:
-          node-version: "12.x"
-      - run: npm run build
-      - name: Deploy
-        uses: crazy-max/ghaction-github-pages@v1
+          node-version: ${{ matrix.node-version }}
+      - name: npm build
+        run: |
+          npm run build --if-present
+      - name: deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          target_branch: gh-pages
-          build_dir: build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./build
