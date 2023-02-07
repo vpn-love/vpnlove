@@ -1,0 +1,12 @@
+.icon {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: currentColor;
+  stroke-linejoin: round;
+
+  &__use {
+    width: inherit;
+    height: inherit;
+    fill: inherit;
+  }
+}
