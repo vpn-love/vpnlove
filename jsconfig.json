@@ -1,0 +1,9 @@
+{
+  "extends": "./jsconfig.paths.json",
+  "compilerOptions": {
+    "experimentalDecorators": true
+  },
+  "include": [
+    "src"
+  ]
+}

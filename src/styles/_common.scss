@@ -1,0 +1,131 @@
+// // CSS variables, shared between all themes
+
+:root {
+  --main-color: #0E0228;
+  --main-background-color: #EDECEE;
+
+  --main-color-hover: #4B09D3;
+  --second-color: #3C07A8;
+  --second-background-color: #fff;
+  --add-background-color: #F8F8F8;
+
+  --button-colored-text: #FFFFFF;
+  --button-background-color: #FFFFFF;
+  --button-background-color-hover: #E5D9FF;
+
+  --color-30: #925DFE;
+  --color-30b: #E9E9E9;
+  --color-20: #E6E6E6;
+  --color-40: #7634FE;
+  --color-40b: #BFBFBF;
+  --color-45: #5B0BFE;
+  --color-50b: #7F7A87;
+  --color-60: #4B09D3;
+  --color-50: #550CE9;
+  --color-45b: #A6A2AD;
+  --color-70b: #383740;
+  --color-100b: #141316;
+  --desctop-width: 1330px;
+
+  --highlight-color: #D2D3D3;
+
+  --border-color: var(--highlight-color);
+  --border: 1px solid;
+
+  --padding-page-inner-desktop: 0 60px;
+
+  --color-positive: #07A821;
+  --color-neutral: #C7A805;
+  --color-negative: #DB0F0F;
+  --color-neutral-bad: #db750f;
+
+  // --color-red: #{$color-red};
+  // --color-green: #{$color-green};
+  // --color-blue: #{$color-blue};
+  // --color-orange: #{$color-orange};
+
+  // --border-radius: 8px;
+  // --border: 1px solid;
+
+  // --large-fontsize: 24px;
+  // --primary-fontsize: 18px;
+  // --content-fontsize: 14px;
+  // --small-fontsize: 12px;
+
+  // --hover-opacity: 0.8;
+
+  // --top-container-list-item-height: 50px;
+  // --top-container-titles-list-item-width: 130px;
+  // --top-container-padding: 20px;
+
+  // --main-color: #1d252d;
+  // --main-color-light: #a7acad;
+  // --secondary-typo-color: #333f48;
+  // --secondary-type-color-light: #777;
+  // --secondary-type-color-lightest: #949596;
+  // --primary-color: #1800e1;  //основной цвет
+  // --secondary-color: #66a7ff;
+  // --primary-color-hover: #00867d0d;
+  // --success: #219653;
+  // --highlight-color: #ebeff2;
+  // --highlight-color-active: #8c86c017; //светло фиолетовый ховер
+  // --highlight-color-active-second: #8c86c00f; //светло-светло фиолетовый ховер
+
+  // --border-color: var(--highlight-color);
+  // --border-color-dark: #ddd;
+
+  // --primary-bg-color: #fff;
+  // --highligh-bg-color: #f5f4f9;
+  // --secondary-bg-color: #dbe2e9;
+  // --bg-color: #F9F9F9;
+  // --nav-btn-bg-hover: var(--highlight-color);
+
+  // --table-primary-color: #337ab7;
+  // --table-border-color: #e8e8e8;
+
+  // --shadow-interface: 0 0px 10px rgba(130, 130, 130, .15);
+  // --shadow-table: 0 0 8px rgba(0, 0, 0, .125);
+  // --shadow-dropdown: 0 6px 12px rgba(0, 0, 0, .18);
+  // --shadow-button: 0 1px 6px -1px rgb(0, 0, 0, 0.2);
+  // --shadow-highest: 0 10px 15px -5px rgba(0, 0, 0, 0.5);
+
+  // --access-color-blue: #4285f4;
+  // --access-color-red: #FF3333;
+  // --access-color-yellow: #FFF38C;
+  // --access-color-black: #000000;
+  // --access-color-green: var(--color-green);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  -webkit-appearance: none;
+
+  &-thumb {
+    border-radius: 5px;
+  }
+
+  &-track {
+    background: transparent;
+  }
+
+  &-thumb {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+// TODO: move to a separate files
+[data-animation-mode=enabled] {
+  --transition-duration-instant: .075s;
+  --transition-duration-fast: .15s;
+  --transition-duration-medium: .25s;
+  --transition-duration-slow: .35s;
+}
+
+// TODO: disable @mui buttons animation here too
+[data-animation-mode=disabled] {
+  --transition-duration-instant: 0;
+  --transition-duration-fast: 0;
+  --transition-duration-medium: 0;
+  --transition-duration-slow: 0;
+}

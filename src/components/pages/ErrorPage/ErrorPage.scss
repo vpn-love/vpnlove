@@ -1,0 +1,53 @@
+.error-page {
+  height: 100%;
+
+  .error_wrapper {
+    max-width: 1090px;
+    margin: 0 auto;
+    text-align: center;
+
+    &__title {
+      margin-bottom: 20px;
+      margin-top: 80px;
+    }
+
+    &__description {
+      margin-bottom: 30px;
+    }
+
+    &__btns {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .button {
+        padding: 15px 30px;
+        width: fit-content;
+        margin: 0 25px;
+
+      }
+
+      .error_wrapper__btns__go-main {
+        background-color: transparent;
+
+      }
+    }
+  }
+}
+
+@media (min-width:1024px) {
+  .error-page {
+
+    .error_wrapper {
+      &__title {
+        margin-top: 90px;
+      }
+
+      &__description {
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+}

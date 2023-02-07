@@ -1,0 +1,516 @@
+.vpn-rating__inner {
+  margin-bottom: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 874px;
+
+  .background {
+    padding: 20px;
+  }
+
+  .tag {
+    font-size: 18px;
+    color: var(--color-100b);
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+
+  .desclaimer {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 125%;
+    color: var(--color-50);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .extended-description__text {
+    font-size: 16px;
+    line-height: 111%;
+    color: var(--color-100b);
+    margin-bottom: 20px;
+
+
+    p {
+      padding: 5px 0;
+      line-height: 25px;
+    }
+
+  }
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--color-45b);
+    margin-bottom: 20px;
+
+    .title-50 {
+      margin-bottom: 10px;
+    }
+
+    .rating {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px 0;
+      border: var(--border) var(--color-100b);
+      border-radius: 10px;
+      height: min-content;
+
+      &__data {
+        padding: 5px 10px 0;
+
+      }
+
+      &__value {
+        font-weight: 700;
+        color: var(--color-45);
+        font-size: 24px;
+        line-height: 150%;
+        vertical-align: top;
+      }
+
+      &__full {
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 150%;
+        color: var(--color-100b);
+      }
+
+      &__place {
+        color: var(--color-100b);
+        font-size: 10px;
+        line-height: 150%;
+        padding: 0 10px 5px;
+        border-bottom: var(--border) var(--color-100b);
+
+      }
+    }
+  }
+
+  &-feature {
+    display: flex;
+    flex-direction: column;
+
+    .comment {
+      font-size: 14px;
+      line-height: 150%;
+      color: var(--color-45b);
+      margin-top: 30px;
+    }
+
+    .progress,
+    .feature-item {
+      margin: 15px 0;
+    }
+
+    .progress {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    .feature-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      &-line {
+        flex-grow: 1;
+        height: 1px;
+        border-bottom: 1px dashed var(--color-45b);
+        margin: auto 10px;
+      }
+
+      &-title {
+        font-size: 15px;
+        line-height: 150%;
+        color: var(--color-100b);
+      }
+
+      &.protocols {
+        align-items: flex-start;
+
+        .feature-item-line {
+          margin-top: 15px;
+        }
+
+        .details-item__description {
+          max-width: 320px;
+        }
+      }
+    }
+  }
+
+  &-details {
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 874px;
+
+    .title {
+      text-align: center;
+    }
+
+    .details-item {
+      margin: 10px 0;
+
+      .border-dashed {
+        margin: 20px 0;
+      }
+
+      .block__buy-vpn {
+        &__price {
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 150%;
+          color: var(--color-100b);
+          margin-bottom: 5px;
+        }
+
+        .button_vpn-link {
+          padding-top: 15px;
+          padding-bottom: 15px;
+          min-width: 240px;
+        }
+      }
+
+      .details-item__description-countries {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 5px 50px;
+
+        .country__item {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+
+          .fi {
+            min-width: 24px;
+          }
+        }
+
+        .country-name {
+          margin-left: 10px;
+          white-space: nowrap;
+        }
+      }
+
+      &.background {
+        padding: 20px;
+      }
+
+      &__header {
+        display: flex;
+        margin-bottom: 22px;
+        flex-direction: row;
+
+        &-status {
+          font-size: 15px;
+        }
+
+        &-title {
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 130%;
+          flex-grow: 1;
+
+        }
+
+        .rating__data {
+          .rating__value {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 130%;
+            color: var(--color-100b);
+          }
+
+          .rating__full {
+            color: var(--color-50b);
+            font-size: 13px;
+            vertical-align: text-bottom;
+          }
+        }
+
+      }
+
+      &__place {
+        font-size: 15px;
+        line-height: 150%;
+        color: var(--color-50b);
+        margin-bottom: 14px;
+      }
+
+      &__rating-line.progress-line {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media (min-width:680px) {
+  .vpn-rating__inner {
+    .extended-description__text {
+      font-size: 20px;
+      margin-bottom: 40px;
+      line-height: 150%;
+
+      p {
+        padding: 10px 0;
+        line-height: 30px;
+      }
+    }
+
+    &-feature {
+      .feature-item {
+        font-size: 18px;
+
+
+        &-title {
+          flex-grow: 1;
+          max-width: 240px;
+          margin-right: 30px;
+        }
+
+        &-line {
+          margin-right: 30px;
+          margin-left: 0;
+
+        }
+
+        &-title,
+        &-value {
+          font-size: 18px;
+
+          .list_elements {
+            justify-content: end;
+          }
+        }
+      }
+    }
+
+    &-details {
+      margin-top: 30px;
+
+      .details-item {
+        margin: 30px 0;
+
+        .border-dashed {
+          margin: 20px 0;
+        }
+
+        .block__buy-vpn {
+          display: flex;
+          flex-direction: row;
+
+          .button_vpn-link {
+            margin-right: 0;
+            // min-width: 200px;
+          }
+
+          &__price {
+            font-size: 36px;
+            line-height: 100%;
+          }
+        }
+
+        &.background {
+          padding: 30px;
+        }
+
+        &__header {
+          margin-bottom: 30px;
+
+          &-status {
+            font-size: 18px;
+          }
+
+          &-title {
+            font-size: 28px;
+          }
+
+          .rating__data {
+            .ratung__value {
+              font-size: 28px;
+            }
+
+
+          }
+        }
+
+        &__place {
+          font-size: 20px;
+        }
+
+        &__rating-line.progress-line {
+          margin-right: 0;
+          margin-bottom: 30px;
+        }
+
+        &__description {
+          opacity: 0.8;
+          line-height: 150%;
+        }
+      }
+    }
+  }
+
+}
+
+@media (min-width:1024px) {
+  .vpn-rating__inner {
+    &-details {
+      .details-item {
+        &__rating-line.progress-line {
+          margin-right: 0;
+        }
+      }
+
+    }
+
+    .background {
+      padding: 30px;
+    }
+
+    .tag {
+      font-size: 24px;
+    }
+
+    &-header {
+      padding-bottom: 40px;
+      margin-bottom: 40px;
+
+      .rating {
+        &__place {
+          font-size: 14px;
+        }
+
+        &__value {
+          font-size: 40px;
+        }
+
+        &__full {
+          font-size: 16px;
+          padding-top: 7px;
+          display: inline-block;
+        }
+      }
+    }
+
+    &-feature {
+      .comment {
+        font-size: 14px;
+      }
+
+      .feature-item {
+
+        &-title,
+        &-value {}
+
+
+      }
+    }
+  }
+
+}
+
+.platforms {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  color: var(--color-50b);
+  overflow-x: auto;
+
+  &__item {
+    margin-right: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .icon {
+      display: block;
+      width: 25px;
+      height: 25px;
+      background-position: center;
+      margin-bottom: 15px;
+    }
+
+    &.active {
+      color: var(--color-50);
+    }
+  }
+
+  &__item>.android {
+    background-image: url('../../../../images/platforms/android.svg');
+  }
+
+  &__item.active>.android {
+    background-image: url('../../../../images/platforms/android_active.svg');
+  }
+
+  &__item>.windows {
+    background-image: url('../../../../images/platforms/windows.svg');
+  }
+
+  &__item.active>.windows {
+    background-image: url('../../../../images/platforms/windows_active.svg');
+  }
+
+  &__item>.macos {
+    background-image: url('../../../../images/platforms/macos.svg');
+  }
+
+  &__item.active>.macos {
+    background-image: url('../../../../images/platforms/macos_active.svg');
+  }
+
+  &__item>.ios {
+    background-image: url('../../../../images/platforms/ios.svg');
+  }
+
+  &__item.active>.ios {
+    background-image: url('../../../../images/platforms/ios_active.svg');
+  }
+
+  &__item>.linux {
+    background-image: url('../../../../images/platforms/linux.svg');
+  }
+
+  &__item.active>.linux {
+    background-image: url('../../../../images/platforms/linux_active.svg');
+  }
+
+  &__item>.browser {
+    background-image: url('../../../../images/platforms/browser.svg');
+  }
+
+  &__item.active>.browser {
+    background-image: url('../../../../images/platforms/browser_active.svg');
+  }
+
+  &__item>.smarttv {
+    background-image: url('../../../../images/platforms/smarttv.svg');
+  }
+
+  &__item.active>.smarttv {
+    background-image: url('../../../../images/platforms/smarttv_active.svg');
+  }
+
+  &__item>.routers {
+    background-image: url('../../../../images/platforms/routers.svg');
+  }
+
+  &__item.active>.routers {
+    background-image: url('../../../../images/platforms/routers_active.svg');
+  }
+
+}

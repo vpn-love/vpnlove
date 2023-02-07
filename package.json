@@ -1,0 +1,66 @@
+{
+  "name": "vpn_love",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://AnnaChervatyuk.github.io/vpn_love",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "classnames": "^2.3.2",
+    "flag-icons": "^6.6.6",
+    "marked": "^4.2.5",
+    "mobx": "^6.7.0",
+    "mobx-react": "^7.6.0",
+    "prettier": "^2.8.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dynamic-sitemap": "^1.2.1",
+    "react-konva": "^18.2.3",
+    "react-loading-skeleton": "^3.1.0",
+    "react-router-dom": "^6.0.2",
+    "react-scripts": "5.0.1",
+    "sass": "^1.56.1",
+    "swiper": "^8.4.5",
+    "use-image": "^1.1.0",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start FAST_REFRESH=true ",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "gh-pages": "^4.0.0",
+    "prettier": "^2.5.0"
+  }
+}

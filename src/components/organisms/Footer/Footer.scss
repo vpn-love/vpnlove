@@ -1,0 +1,135 @@
+.footer__wrapper {
+  width: 100%;
+
+  .footer__inner {
+    margin: 0 auto 10px;
+
+    .footer__elements {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+      margin-bottom: 10px;
+      border-top: 4px solid var(--second-color);
+      margin-top: 10px;
+      padding: 15px 0;
+      flex-wrap: wrap;
+
+      .link_rks {
+        padding-right: 15px;
+      }
+
+      .footer__element {
+        width: 50%;
+
+        &.language {
+          text-align: center;
+          width: 100%;
+          padding-top: 20px;
+          border-top: 1px solid var(--second-color);
+          margin-top: 20px;
+          font-size: 16px;
+        }
+
+
+
+        &.contact {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          padding-left: 15px;
+          font-size: 14px;
+
+          .vpn_icon {
+            display: inline-block;
+            background-image: url('../../../images/vpn_icon.svg');
+            background-size: contain;
+            height: 20px;
+            width: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+
+          .address {
+            display: inline-block;
+            vertical-align: baseline;
+          }
+        }
+
+        &.rks {
+          height: 14px;
+          width: 104px;
+        }
+      }
+
+    }
+
+    .footer-data {
+      color: var(--color-50b);
+      text-transform: uppercase;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer__wrapper {
+
+    .footer__inner {
+      .footer__elements {
+        padding: 0;
+        flex-wrap: no-wrap;
+
+        .link_rks {
+          padding-right: 0;
+        }
+
+        .footer__element {
+          flex: 1;
+
+          &.rks {
+            height: 16px;
+            width: 136px;
+            background-size: auto;
+          }
+
+          &.contact {
+            padding-left: 0;
+            font-size: 16px;
+
+            .vpn_icon {
+              height: 40px;
+              width: 40px;
+              background-size: auto;
+            }
+          }
+
+          &.language {
+            text-align: right;
+            width: auto;
+            padding-top: 0;
+            border-top: none;
+            margin-top: 0;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+@media (min-width: 1440px) {
+  .footer__wrapper {
+
+    .footer__inner {
+      max-width: var(--desctop-width);
+
+
+    }
+  }
+}

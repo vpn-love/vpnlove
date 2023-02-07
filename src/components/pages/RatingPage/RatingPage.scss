@@ -1,0 +1,36 @@
+.rating-page {
+  margin-bottom: 50px;
+
+  .page__inner {
+    max-width: 1096px !important;
+  }
+
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .description {
+    font-size: 18px;
+    line-height: 150%;
+    margin-bottom: 30px;
+  }
+
+}
+
+@media (min-width:1024px) {
+  .rating-page {
+    margin-bottom: 100px;
+    margin-right: 60px;
+    margin-left: 60px;
+    width: auto;
+
+    .title {
+      margin-bottom: 30px;
+    }
+
+    .description {
+      font-size: 24px;
+      margin-bottom: 60px;
+    }
+  }
+}

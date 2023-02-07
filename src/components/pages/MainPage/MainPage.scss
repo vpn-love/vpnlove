@@ -1,0 +1,45 @@
+.main-page__wrapper {
+  width: 100%;
+
+  .main-page__inner {
+    max-width: var(--desctop-width);
+    margin: 0 auto;
+    padding: 0 15px;
+
+    .vpn-list__wrapper {
+      .vpn-list__row {
+        &:hover {
+          cursor: pointer;
+
+          .button {
+            background-color: var(--button-background-color-hover);
+            transition: all .5s;
+          }
+        }
+      }
+
+      .vpn-list__inner.background {
+        background-color: var(--add-background-color);
+      }
+    }
+  }
+}
+
+@media (min-width:1024px) {
+  .main-page__wrapper {
+    margin-right: 60px;
+    margin-left: 60px;
+    width: auto;
+
+    .main-page__inner {
+      padding: 0 5px;
+
+      .news-list__wrapper {
+        margin-bottom: 150px;
+      }
+    }
+  }
+}
+
+
+@media (min-width:1440px) {}
