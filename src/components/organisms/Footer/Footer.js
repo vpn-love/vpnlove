@@ -18,9 +18,8 @@ class Footer extends Component {
             <a href="https://roskomsvoboda.org/" className="link_rks" target="_blank">
               <span className="footer__element rks"></span>
             </a>
-            <div className="footer__element language">Русский</div>
+            <div className="footer__element footer-data">VPNLOVE, 2023</div>
           </div>
-          <div className="footer-data">© VPNLOVE, 2022</div>
         </div>
       </div>
     );

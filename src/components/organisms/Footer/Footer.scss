@@ -72,6 +72,7 @@
       font-size: 12px;
       line-height: 16px;
       text-align: center;
+      flex-grow: 1;
     }
   }
 }
@@ -116,6 +117,11 @@
             margin-top: 0;
           }
 
+        }
+        .footer-data {
+          width: auto;
+          text-align: right;
+          flex-grow: 0;
         }
       }
     }

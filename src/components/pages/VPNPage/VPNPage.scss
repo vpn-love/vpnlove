@@ -26,7 +26,12 @@
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-
+    // .slider-vpn__wrapper  {
+    //   max-height: 435px;
+      .swiper {
+        height: 435px;
+      }
+    // }
     &__text {
       margin-bottom: 30px;
     }
@@ -148,6 +153,14 @@
 
     .page__inner {
       position: relative;
+
+      .swiper {
+        height: 570px;
+        img {
+          max-height: 100%;
+        }
+
+      }
     }
 
     .description {
