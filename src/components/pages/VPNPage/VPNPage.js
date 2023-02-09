@@ -209,7 +209,7 @@ const VPNPage = observer(() => {
                       <ButtonLink
                         text="Купить"
                         iconId="exportsquare"
-                        url={vpnDescr.website}
+                        url={(vpnDescr.partnerLink && vpnDescr.partnerLink !== '') ? vpnDescr.partnerLink : vpnDescr.website}
                         externalURL={true}
                         align="center"
                         colored={true}
