@@ -29,6 +29,7 @@
 
     .icon_triangle {
       margin-right: 15px;
+      margin-left: 5px;
     }
 
     &_title {
@@ -70,6 +71,9 @@
 
       &:last-child {
         border-bottom: none;
+      }
+      .icon_triangle {
+        margin-left: 0;
       }
     }
   }
