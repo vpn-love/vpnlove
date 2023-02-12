@@ -9,7 +9,9 @@
     .btn_all_vpn {
       display: none;
     }
-
+    .btn_all_vpn__mobile {
+      padding-left: 15px;
+    }
     .btn_all_vpn__mobile>.button_link {
       width: 56px;
       height: 46px;
@@ -39,7 +41,7 @@
 }
 
 .vpn-list__item {
-  padding: 15px 0;
+  padding: 25px 0;
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
@@ -120,7 +122,7 @@
     margin-top: 20px;
 
     .background {
-      padding: 30px 15px;
+      padding: 30px 0;
 
       &:first-child {
         margin-bottom: 20px;
@@ -130,16 +132,15 @@
     .background .vpn-list__item {
       // align-items: center;
       border-bottom: var(--border) var(--border-color);
-
+      
       &:last-child {
         border-bottom: none;
       }
 
       &-descr {
-        flex-direction: row;
         flex: 1;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
+        justify-content: flex-start;
       }
 
       &-name {
@@ -165,7 +166,7 @@
         font-size: 16px;
 
         .rating_value {
-          font-size: 33px;
+          font-size: inherit;
         }
       }
 
@@ -198,7 +199,22 @@
   }
 }
 
-@media (min-width: 1024px) {
+.rating-page .vpn-list__inner .background {
+  .vpn-list__item {
+  margin-left: 15px;
+      margin-right: 15px;
+  
+    .vpn-list__item-row {
+      margin-bottom: 10px;
+      
+    }
+  }
+}
+
+
+@media (min-width: 768px) {
+
+
   .vpn-list__inner {
     margin-top: 40px;
     margin-bottom: 100px;
@@ -249,7 +265,19 @@
         padding: 0;
       }
 
-      .vpn-list__item {
+      .background .vpn-list__item {
+        margin-left: 0;
+        margin-right: 0;
+        .vpn-list__item-row {
+          margin-bottom: 40px;
+        }
+          &-descr {
+            flex-direction: row;
+            flex: 1;
+            justify-content: space-between;
+            align-items: center;
+          }
+        
         &-rating {
           .rating_value {
             font-size: 40px;

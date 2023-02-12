@@ -4,7 +4,7 @@ import { Icon } from './../';
 import cn from 'classnames';
 
 const ButtonLink = (props) => {
-  const { text, url, iconId, colored, customClass, externalURL } = props;
+  const { text, url, icon, colored, customClass, externalURL } = props;
   const align = props.align || '';
   const arrow = props.arrowRight ? 'arrow_right' : '';
   const isColored = colored ? 'colored' : '';
@@ -18,8 +18,9 @@ const ButtonLink = (props) => {
           className={`button button_link ${align} ${arrow} ${isColored} ${customClass}`}
         >
           {text}
+
           {/* <Icon id="exportsquare" /> */}
-          {/* {icon && <Icon id="exportsquare" />} */}
+          {icon && <span className='button__icon'>{icon}</span>}
         </a>
       ) : (
         <Link to={url} className={`button button_link ${align} ${arrow} ${isColored} ${customClass}`}>

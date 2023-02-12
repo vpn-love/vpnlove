@@ -11,10 +11,16 @@
     top: 0;
     height: 100vh;
     width: 100vw;
-    background-color: var(--color-70b);
-    opacity: 0.95;
     z-index: 3;
-
+    &__background {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 25%;
+      background-color: var(--color-70b);
+      opacity: 0.95;
+    }
 
     &__inner {
       width: 75%;
