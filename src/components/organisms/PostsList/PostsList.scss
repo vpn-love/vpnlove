@@ -75,6 +75,15 @@
   }
 }
 
+
+@media (max-width:340px) {
+.news-list__wrapper .news-list__inner .news__list .news-item__wrapper .news-item__content {
+  margin-right: auto;
+  padding-right: 5px;
+}
+}
+
+
 @media (min-width:1024px) {
   .news-list__wrapper {
     justify-content: space-between;
