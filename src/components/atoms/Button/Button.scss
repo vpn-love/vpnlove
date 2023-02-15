@@ -9,6 +9,9 @@
   display: block;
   position: relative;
   height: fit-content;
+  &__icon{
+    margin-left: 15px;
+  }
 
   &:hover {
     background-color: var(--button-background-color-hover);

@@ -48,6 +48,7 @@
             background-size: contain;
             height: 20px;
             width: 20px;
+            min-width: 20px;
             background-repeat: no-repeat;
             background-position: center;
           }
@@ -73,6 +74,7 @@
       line-height: 16px;
       text-align: center;
       flex-grow: 1;
+      white-space: nowrap;
     }
   }
 }
@@ -90,7 +92,7 @@
         }
 
         .footer__element {
-          flex: 1;
+          flex: 0;
 
           &.rks {
             height: 16px;

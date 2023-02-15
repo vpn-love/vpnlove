@@ -59,6 +59,18 @@
           padding-bottom: 0;
         }
       }
+      blockquote {
+        padding: 20px;
+        background: var(--second-background-color);
+        border-radius: 20px;
+        margin: 20px 0;
+        &:first-child {
+          margin-top: 0;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 }
@@ -145,6 +157,16 @@
 
           &:last-child {
             padding-bottom: 0;
+          }
+        }
+        blockquote {
+          padding: 40px;
+          margin: 40px 0;
+          &:first-child {
+            margin-top: 0;
+          }
+          &:last-child {
+            margin-bottom: 0;
           }
         }
       }
