@@ -84,6 +84,8 @@ const GeneralRating = (props) => {
               customClass = 'collection_' + element.state.toLowerCase();
             } else if (element.type === 'protocols') {
               customClass = 'protocols';
+            } else if (element.type === 'available_from_russia') {
+              value = element.state ? 'Да' : 'Нет';
             }
             return (
               <FeatureItem
