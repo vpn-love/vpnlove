@@ -86,7 +86,10 @@ const GeneralRating = (props) => {
               customClass = 'protocols';
             } else if (element.type === 'available_from_russia') {
               value = element.state ? 'Да' : 'Нет';
+            } else if (element.type === 'logging') {
+              customClass = element.state ? 'negative' : 'positive' ;
             }
+
             return (
               <FeatureItem
                 key={element.type}
