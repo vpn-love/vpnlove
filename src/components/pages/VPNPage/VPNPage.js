@@ -119,7 +119,7 @@ const VPNPage = observer(() => {
                         </defs>
                         </svg>
                         }
-                      url={vpnDescr.website}
+                      url={(priceVPN.partnerLink && priceVPN.partnerLink !== '') ? priceVPN.partnerLink : vpnDescr.website}
                       externalURL={true}
                       align="center"
                       colored={true}
