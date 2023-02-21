@@ -9,9 +9,11 @@
     .btn_all_vpn {
       display: none;
     }
+
     .btn_all_vpn__mobile {
       padding-left: 15px;
     }
+
     .btn_all_vpn__mobile>.button_link {
       width: 56px;
       height: 46px;
@@ -45,13 +47,16 @@
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
+
   &-russia_disabled {
     margin-left: 5px;
     display: inline;
+
     svg {
       vertical-align: top;
     }
   }
+
   &-number {
     font-size: 14px;
     line-height: 150%;
@@ -96,6 +101,12 @@
       color: var(--color-45);
     }
   }
+
+  &-price {
+    color: var(--color-50b);
+    font-size: 16px;
+    line-height: 150%;
+  }
 }
 
 .vpn-list__wrapper {
@@ -138,7 +149,7 @@
     .background .vpn-list__item {
       // align-items: center;
       border-bottom: var(--border) var(--border-color);
-      
+
       &:last-child {
         border-bottom: none;
       }
@@ -156,6 +167,7 @@
       &-content {
         flex: 1;
         flex-direction: column;
+        position: relative;
       }
 
       &-row {
@@ -169,7 +181,10 @@
       }
 
       &-rating {
-        font-size: 16px;
+        font-size: 13px;
+        position: absolute;
+        right: 0;
+        bottom: -2px;
 
         .rating_value {
           font-size: inherit;
@@ -177,7 +192,7 @@
       }
 
       &-progress {
-        width: 100%;
+        width: calc(100% - 50px);
         border-radius: 3px;
         height: 4px;
         background-color: #DADADA;
@@ -207,12 +222,12 @@
 
 .rating-page .vpn-list__inner .background {
   .vpn-list__item {
-  margin-left: 15px;
-      margin-right: 15px;
-  
+    margin-left: 15px;
+    margin-right: 15px;
+
     .vpn-list__item-row {
       margin-bottom: 10px;
-      
+
     }
   }
 }
@@ -274,17 +289,25 @@
       .background .vpn-list__item {
         margin-left: 0;
         margin-right: 0;
+
         .vpn-list__item-row {
           margin-bottom: 40px;
         }
-          &-descr {
-            flex-direction: row;
-            flex: 1;
-            justify-content: space-between;
-            align-items: center;
-          }
-        
+
+        &-progress {
+          width: 100%;
+        }
+
+        &-descr {
+          flex-direction: row;
+          flex: 1;
+          justify-content: space-between;
+          align-items: center;
+        }
+
         &-rating {
+          position: relative;
+
           .rating_value {
             font-size: 40px;
           }
