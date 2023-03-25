@@ -17,6 +17,10 @@ const List = (props) => {
           <div className="vpn-list__item-rating">
             <span className="rating_value">{item.rating}</span>
             <span className="rating_full">/10</span>
+            <span className="vpn-list__item-price">
+              от {item.currencySymbol}
+              {item.price}
+            </span>
           </div>
         </div>
       </div>
