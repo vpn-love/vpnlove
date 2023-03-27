@@ -10,13 +10,11 @@ const PostsListPage = observer(() => {
 
   const location = useLocation().pathname.replace('/', '');
   const search = useParams().newsName;
-  // console.log('search', search);
   const { categoriesData } = PostsStore;
   const { queryData, status, answerData } = SearchStore;
 
   const category = categoriesData.find((element) => element.slug === location);
-  // console.log('location', location);
-  // console.log('answerData', answerData);
+
   return (
     <>
       <TopPanel />
