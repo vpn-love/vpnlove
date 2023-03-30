@@ -37,6 +37,79 @@
 
     }
 
+    .news-page__short__banner {
+      margin-top: 40px;
+
+      .details-item__description {
+        max-width: 320px;
+        line-height: 150%;
+
+        p {
+          margin: 0;
+          padding: 0;
+          opacity: 0.8;
+        }
+
+        ul {
+          padding-left: 20px;
+          opacity: 0.8;
+          margin: 0;
+        }
+      }
+
+      .details-item {
+        margin: 10px 0;
+
+        .border-dashed {
+          margin: 20px 0;
+        }
+
+        .block__buy-vpn {
+          &__price {
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 150%;
+            color: var(--color-100b);
+            margin-bottom: 5px;
+          }
+
+          &__service {
+            color: var(--color-50b);
+            font-size: 16px;
+            line-height: 150%;
+            text-align: center;
+          }
+
+          .button_vpn-link {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            min-width: 240px;
+            margin-bottom: 5px;
+          }
+        }
+
+        &.background {
+          padding: 20px;
+        }
+
+        &__header {
+          display: flex;
+          margin-bottom: 22px;
+          flex-direction: row;
+
+          &-status {
+            font-size: 15px;
+          }
+
+          &-title {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 130%;
+            flex-grow: 1;
+          }
+        }
+      }
+    }
 
     .news-page__text {
       font-size: 15px;
@@ -59,14 +132,17 @@
           padding-bottom: 0;
         }
       }
+
       blockquote {
         padding: 20px;
         background: var(--second-background-color);
         border-radius: 20px;
         margin: 20px 0;
+
         &:first-child {
           margin-top: 0;
         }
+
         &:last-child {
           margin-bottom: 0;
         }
@@ -140,6 +216,51 @@
     }
 
     &__content {
+      .news-page__short__banner {
+        .details-item__description {
+          max-width: 100%;
+          font-size: 18px;
+        }
+
+
+
+        .details-item {
+          margin: 30px 0;
+
+          .border-dashed {
+            margin: 30px 0;
+          }
+
+          .block__buy-vpn {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            &__price {
+              font-size: 36px;
+              line-height: 100%;
+            }
+
+            .button_vpn-link {
+              margin-right: 0;
+              margin-bottom: 5px;
+            }
+          }
+
+          &.background {
+            padding: 30px;
+          }
+
+          &__header {
+            margin-bottom: 30px;
+
+            &-title {
+              font-size: 28px;
+            }
+          }
+        }
+      }
+
       .news_page__lead {
         font-size: 24px;
       }
@@ -159,12 +280,15 @@
             padding-bottom: 0;
           }
         }
+
         blockquote {
           padding: 40px;
           margin: 40px 0;
+
           &:first-child {
             margin-top: 0;
           }
+
           &:last-child {
             margin-bottom: 0;
           }

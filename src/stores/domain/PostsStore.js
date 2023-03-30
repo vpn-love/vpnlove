@@ -72,6 +72,9 @@ class PostsStore {
     try {
       const data = await this.vpnService.get('categories');
       runInAction(() => {
+        data.forEach((element) => {
+          return (element.posts = element.posts.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1)));
+        });
         this._categoriesData = data;
         this._isLoadedCategories = true;
       });
@@ -87,7 +90,8 @@ class PostsStore {
     try {
       const data = await this.vpnService.get('posts');
       runInAction(() => {
-        this._postsData = data;
+        this._postsData = data.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+
         this._isLoadedPosts = true;
       });
     } catch (error) {
@@ -102,7 +106,7 @@ class PostsStore {
     try {
       const data = await this.vpnService.get('top-rated');
       runInAction(() => {
-        this._topRatedData = data;
+        this._topRatedData = data.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
         this._isLoadedTop = true;
       });
     } catch (error) {

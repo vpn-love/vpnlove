@@ -141,6 +141,7 @@
 
         .details-item__description {
           max-width: 320px;
+
           &.list_elements {
             justify-content: flex-end;
           }
@@ -148,6 +149,8 @@
       }
     }
   }
+
+
 
   &-details {
     margin-top: 60px;
