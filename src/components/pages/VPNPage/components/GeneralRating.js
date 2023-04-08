@@ -68,6 +68,9 @@ const GeneralRating = (props) => {
               value = element.stateVerbose;
               customClass = `collection_${element.state.toLowerCase()}`;
             }
+            if (element.type === 'available_from_russia') {
+              value = element.state ? 'Да' : 'Нет';
+            }
             return <FeatureItem key={element.type} title={element.name} value={value} customClass={customClass} />;
           })}
           <div className="comment">Параметры, не влияющие на рейтинг</div>
@@ -87,7 +90,7 @@ const GeneralRating = (props) => {
             } else if (element.type === 'available_from_russia') {
               value = element.state ? 'Да' : 'Нет';
             } else if (element.type === 'logging') {
-              customClass = element.state ? 'negative' : 'positive' ;
+              customClass = element.state ? 'negative' : 'positive';
             }
 
             return (
