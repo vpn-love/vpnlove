@@ -15,9 +15,6 @@ class Footer extends Component {
                 <a href="mailto:contact@vpnlove.me">contact@vpnlove.me</a>
               </span>
             </div>
-            <a href="https://roskomsvoboda.org/" className="link_rks" target="_blank">
-              <span className="footer__element rks"></span>
-            </a>
             <div className="footer__element footer-data">VPNLOVE, 2023</div>
           </div>
         </div>
