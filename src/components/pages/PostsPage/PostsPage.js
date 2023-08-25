@@ -44,7 +44,7 @@ const PostsPage = observer(() => {
           </div>
           <div className="news-page__img">
             {isLoadedPost ? (
-              <img src={post.image} />
+              <img src={post.imageUrl} />
             ) : (
               <Skeleton count={10} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
             )}

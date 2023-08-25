@@ -20,7 +20,7 @@ const PostsItem = (props) => {
           <div className="news-item__title">{item.title}</div>
         </div>
         <div className="news-item__img">
-          <img src={item.image} />
+          <img src={item.imageUrl} />
         </div>
       </div>
       {item.shopBanner && (
