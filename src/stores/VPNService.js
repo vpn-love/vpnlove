@@ -1,4 +1,4 @@
-const webApiUrl = 'https://app.vpnlove.me/api/';
+const webApiUrl = 'https://app.vpnlove.me:34443/api/';
 
 class VPNService {
   get = async (target, urlParams) => {
