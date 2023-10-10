@@ -23,7 +23,6 @@ const RatingPage = () => {
               , где мы&nbsp;подробно рассказываем о&nbsp;всех пунктах и&nbsp;нюансах.
             </p>
           </div>
-          {/* <div className="filters">фильтры</div> */}
           <FullListVpn />
         </div>
       </div>

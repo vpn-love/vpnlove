@@ -1,0 +1,189 @@
+import { useState, useEffect, useCallback } from 'react';
+import { VPNsStore, FiltersStore } from '../../../stores/';
+import { observer } from 'mobx-react';
+import Multiselect from 'multiselect-react-dropdown';
+
+import './FiltersVPN.scss';
+
+const FiltersVPN = observer(() => {
+  const { countriesList, platformsList, paymentMethodsList } = FiltersStore;
+  const [selectedPlatforms, setSelectedPlatforms] = useState([]);
+  const [selectedPaymentMethods, setSelectedPaymentMethods] = useState([]);
+  const [selectedCountries, setSelectedCountries] = useState([]);
+  const deleteFilter = (key, filter) => {
+    let list = [];
+    switch (filter) {
+      case 'platforms':
+        list = selectedPlatforms.filter((n) => n.slug !== key);
+        setSelectedPlatforms(list);
+        VPNsStore.selectedPlatforms = list;
+        break;
+      case 'payments':
+        list = selectedPaymentMethods.filter((n) => n.slug !== key);
+        setSelectedPaymentMethods(list);
+        VPNsStore.selectedPaymentMethods = list;
+        break;
+      case 'countries':
+        list = selectedCountries.filter((n) => n.code.toLowerCase() !== key.toLowerCase());
+        setSelectedCountries(list);
+        VPNsStore.selectedCountries = list;
+        break;
+      case 'all':
+        setSelectedCountries(list);
+        VPNsStore.selectedCountries = list;
+        setSelectedPaymentMethods(list);
+        VPNsStore.selectedPaymentMethods = list;
+        setSelectedPlatforms(list);
+        VPNsStore.selectedPlatforms = list;
+        break;
+      default:
+        break;
+    }
+    VPNsStore.filterVPN();
+  };
+  return (
+    <div className="filters__wrapper">
+      <div className="filters__list">
+        <Multiselect
+          options={paymentMethodsList}
+          selectedValues={selectedPaymentMethods}
+          onSelect={(value) => {
+            setSelectedPaymentMethods(value);
+            VPNsStore.selectedPaymentMethods = value;
+            VPNsStore.filterVPN();
+          }}
+          displayValue="name"
+          onRemove={(value) => {
+            setSelectedPaymentMethods(value);
+            VPNsStore.selectedPaymentMethods = value;
+            VPNsStore.filterVPN();
+          }}
+          placeholder="Способы оплаты"
+          hidePlaceholder={false}
+          showCheckbox={true}
+          hideSelectedList={true}
+          className={`filter__item filter-payment_methods ${selectedPaymentMethods.length > 0 ? 'active' : ''}`}
+        />
+        <Multiselect
+          options={platformsList}
+          selectedValues={selectedPlatforms}
+          onSelect={(value) => {
+            setSelectedPlatforms(value);
+            VPNsStore.selectedPlatforms = value;
+            VPNsStore.filterVPN();
+          }}
+          displayValue="name"
+          onRemove={(value) => {
+            setSelectedPlatforms(value);
+            VPNsStore.selectedPlatforms = value;
+            VPNsStore.filterVPN();
+          }}
+          placeholder="Платформы и ОС"
+          hidePlaceholder={false}
+          showCheckbox={true}
+          hideSelectedList={true}
+          className={`filter__item filter-plarforms ${selectedPlatforms.length > 0 ? 'active' : ''}`}
+        />
+        <Multiselect
+          options={countriesList}
+          selectedValues={selectedCountries}
+          onSelect={(value) => {
+            setSelectedCountries(value);
+            VPNsStore.selectedCountries = value;
+            VPNsStore.filterVPN();
+          }}
+          displayValue="name"
+          onRemove={(value) => {
+            setSelectedCountries(value);
+            VPNsStore.selectedCountries = value;
+            VPNsStore.filterVPN();
+          }}
+          placeholder="Страны"
+          hidePlaceholder={false}
+          showCheckbox={true}
+          hideSelectedList={true}
+          className={`filter__item filter-countries ${selectedCountries.length > 0 ? 'active' : ''}`}
+        />
+      </div>
+      {(selectedPlatforms.length > 0 || selectedCountries.length > 0 || selectedPaymentMethods.length > 0) && (
+        <div className="filters_selected__list">
+          {selectedPaymentMethods.map((node, key) => {
+            return (
+              <div className="filter__item" key={key}>
+                {node.name}
+                <div
+                  onClick={() => {
+                    deleteFilter(node.slug, 'payments');
+                  }}
+                  className="filter__item-close"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M9.17 14.83L14.83 9.17M14.83 14.83L9.17 9.17M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                      stroke="#550CE9"
+                      sstrokewidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            );
+          })}
+          {selectedPlatforms.map((node, key) => {
+            return (
+              <div className="filter__item" key={key}>
+                {node.name}
+                <div
+                  onClick={() => {
+                    deleteFilter(node.slug, 'platforms');
+                  }}
+                  className="filter__item-close"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M9.17 14.83L14.83 9.17M14.83 14.83L9.17 9.17M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                      stroke="#550CE9"
+                      sstrokewidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            );
+          })}
+          {selectedCountries.map((node, key) => {
+            return (
+              <div className="filter__item" key={key}>
+                {node.name}
+                <div
+                  onClick={() => {
+                    deleteFilter(node.code, 'countries');
+                  }}
+                  className="filter__item-close"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M9.17 14.83L14.83 9.17M14.83 14.83L9.17 9.17M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                      stroke="#550CE9"
+                      sstrokewidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            );
+          })}
+
+          <div className="filter__item filter__item-delete" onClick={() => deleteFilter(null, 'all')}>
+            Сбросить фильтры
+          </div>
+        </div>
+      )}
+    </div>
+  );
+});
+
+export default FiltersVPN;

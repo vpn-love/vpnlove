@@ -3,12 +3,12 @@ import './ListVPN.scss';
 import { toJS } from 'mobx';
 
 const List = (props) => {
-  const { item, index } = props;
+  const { item } = props;
   const availableFromRussia = item.cards.find(({ type }) => type === 'available_from_russia');
 
   return (
     <Link to={`/rating/${item.slug}`} className="vpn-list__item">
-      <div className="vpn-list__item-number">{index + 1}</div>
+      <div className="vpn-list__item-number">{item.index}</div>
 
       <div className="vpn-list__item-content">
         <div className="vpn-list__item-row">
