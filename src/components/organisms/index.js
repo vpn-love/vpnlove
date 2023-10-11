@@ -7,3 +7,4 @@ export { default as PostsList } from './PostsList/PostsList';
 export { default as Slider } from './Slider/Slider';
 export { default as FullListVpn } from './ListVPN/FullListVpn';
 export { default as Search } from './Search/Search';
+export { default as FiltersVPN } from './FiltersVPN/FiltersVPN';

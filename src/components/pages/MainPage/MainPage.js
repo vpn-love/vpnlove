@@ -13,6 +13,24 @@ const MainPage = observer(() => {
   const { vpnsData, isLoadedVPNs } = VPNsStore;
   const navigate = useNavigate();
 
+  const month = new Date().getMonth() - 1 < 0 ? 11 : new Date().getMonth() - 1;
+  const year = month === 11 ? new Date().getFullYear() - 1 : new Date().getFullYear();
+
+  const nameMonthDict = [
+    'январе',
+    'феврале',
+    'марте',
+    'апрелу',
+    'май',
+    'июне',
+    'июле',
+    'августе',
+    'сентябре',
+    'октябре',
+    'ноябре',
+    'декабре'
+  ];
+
   return (
     <>
       <TopPanel />
@@ -32,7 +50,9 @@ const MainPage = observer(() => {
                 navigate(`/rating`);
               }}
             >
-              <div className="vpn-list__title title-50">Лучшие VPN — полный анализ (обновлено в январе 2023 г.)</div>
+              <div className="vpn-list__title title-50">
+                Лучшие VPN — полный анализ (обновлено в {nameMonthDict[month]} {year} г.)
+              </div>
               <div className="btn btn_all_vpn">
                 <ButtonLink text="Все" url="/rating" arrowRight={true} />
               </div>
