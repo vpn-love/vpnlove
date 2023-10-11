@@ -9,7 +9,7 @@ import RatingPage from './pages/RatingPage/RatingPage';
 import VPNPage from './pages/VPNPage/VPNPage';
 import Sitemap from './Sitemap';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
-import { BannersStore, PostsStore, VPNsStore } from '../stores/';
+import { BannersStore, PostsStore, VPNsStore, FiltersStore } from '../stores/';
 
 const App = () => {
   BannersStore.getBannersListAsync();
@@ -17,7 +17,7 @@ const App = () => {
   VPNsStore.getVPNsAsync();
   PostsStore.getTopRatedAsync();
   PostsStore.getCategoriesAsync();
-
+  FiltersStore.getFilters();
   return (
     <div className="wrapper" id="wrapper">
       <>

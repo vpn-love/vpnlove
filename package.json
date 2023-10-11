@@ -12,6 +12,7 @@
     "marked": "^4.2.5",
     "mobx": "^6.7.0",
     "mobx-react": "^7.6.0",
+    "multiselect-react-dropdown": "^2.0.25",
     "prettier": "^2.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

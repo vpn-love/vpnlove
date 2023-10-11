@@ -15,6 +15,20 @@
     margin-bottom: 30px;
   }
 
+  .vpn-list__empty {
+    margin: 0 30px;
+    line-height: 150%;
+    text-align: center;
+  }
+}
+
+@media (min-width:768px) {
+  .rating-page {
+    .vpn-list__empty {
+      padding: 20px 30px;
+      font-size: 24px;
+    }
+  }
 }
 
 @media (min-width:1024px) {
@@ -32,5 +46,7 @@
       font-size: 24px;
       margin-bottom: 60px;
     }
+
+
   }
 }
