@@ -11,7 +11,6 @@
 
     .filter__item {
       display: block;
-      padding: 10px 20px;
       border-radius: 20px;
       background: var(--button-background-color);
       color: var(--color-60);
@@ -39,6 +38,7 @@
 
         input {
           margin: 0;
+          padding: 10px 20px;
 
           &:hover {
             cursor: pointer;
@@ -58,7 +58,7 @@
       &.filter-payment_methods {
         .searchWrapper {
           input {
-            width: 135px;
+            width: 175px;
           }
         }
       }
@@ -66,7 +66,7 @@
       &.filter-plarforms {
         .searchWrapper {
           input {
-            width: 138px;
+            width: 178px;
           }
         }
       }
@@ -74,7 +74,7 @@
       &.filter-countries {
         .searchWrapper {
           input {
-            width: 61px;
+            width: 101px;
           }
 
         }
