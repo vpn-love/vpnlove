@@ -7,33 +7,25 @@ import './FiltersVPN.scss';
 
 const FiltersVPN = observer(() => {
   const { countriesList, platformsList, paymentMethodsList } = FiltersStore;
-  const [selectedPlatforms, setSelectedPlatforms] = useState([]);
-  const [selectedPaymentMethods, setSelectedPaymentMethods] = useState([]);
-  const [selectedCountries, setSelectedCountries] = useState([]);
+  const { selectedPaymentMethods, selectedPlatforms, selectedCountries } = VPNsStore;
   const deleteFilter = (key, filter) => {
     let list = [];
     switch (filter) {
       case 'platforms':
         list = selectedPlatforms.filter((n) => n.slug !== key);
-        setSelectedPlatforms(list);
         VPNsStore.selectedPlatforms = list;
         break;
       case 'payments':
         list = selectedPaymentMethods.filter((n) => n.slug !== key);
-        setSelectedPaymentMethods(list);
         VPNsStore.selectedPaymentMethods = list;
         break;
       case 'countries':
         list = selectedCountries.filter((n) => n.code.toLowerCase() !== key.toLowerCase());
-        setSelectedCountries(list);
         VPNsStore.selectedCountries = list;
         break;
       case 'all':
-        setSelectedCountries(list);
         VPNsStore.selectedCountries = list;
-        setSelectedPaymentMethods(list);
         VPNsStore.selectedPaymentMethods = list;
-        setSelectedPlatforms(list);
         VPNsStore.selectedPlatforms = list;
         break;
       default:
@@ -45,16 +37,15 @@ const FiltersVPN = observer(() => {
     <div className="filters__wrapper">
       <div className="filters__list">
         <Multiselect
+          emptyRecordMsg="Ничего не найдено"
           options={paymentMethodsList}
           selectedValues={selectedPaymentMethods}
           onSelect={(value) => {
-            setSelectedPaymentMethods(value);
             VPNsStore.selectedPaymentMethods = value;
             VPNsStore.filterVPN();
           }}
           displayValue="name"
           onRemove={(value) => {
-            setSelectedPaymentMethods(value);
             VPNsStore.selectedPaymentMethods = value;
             VPNsStore.filterVPN();
           }}
@@ -65,16 +56,15 @@ const FiltersVPN = observer(() => {
           className={`filter__item filter-payment_methods ${selectedPaymentMethods.length > 0 ? 'active' : ''}`}
         />
         <Multiselect
+          emptyRecordMsg="Ничего не найдено"
           options={platformsList}
           selectedValues={selectedPlatforms}
           onSelect={(value) => {
-            setSelectedPlatforms(value);
             VPNsStore.selectedPlatforms = value;
             VPNsStore.filterVPN();
           }}
           displayValue="name"
           onRemove={(value) => {
-            setSelectedPlatforms(value);
             VPNsStore.selectedPlatforms = value;
             VPNsStore.filterVPN();
           }}
@@ -85,16 +75,15 @@ const FiltersVPN = observer(() => {
           className={`filter__item filter-plarforms ${selectedPlatforms.length > 0 ? 'active' : ''}`}
         />
         <Multiselect
+          emptyRecordMsg="Ничего не найдено"
           options={countriesList}
           selectedValues={selectedCountries}
           onSelect={(value) => {
-            setSelectedCountries(value);
             VPNsStore.selectedCountries = value;
             VPNsStore.filterVPN();
           }}
           displayValue="name"
           onRemove={(value) => {
-            setSelectedCountries(value);
             VPNsStore.selectedCountries = value;
             VPNsStore.filterVPN();
           }}

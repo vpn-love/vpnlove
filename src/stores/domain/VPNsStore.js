@@ -70,6 +70,15 @@ class VPNsStore {
     return this._isLoadedVPNData;
   }
 
+  get selectedPaymentMethods() {
+    return this._selectedPaymentMethods;
+  }
+  get selectedPlatforms() {
+    return this._selectedPlatforms;
+  }
+  get selectedCountries() {
+    return this._selectedCountries;
+  }
   set vpnDescr(value) {
     this._vpnDescr = value;
   }

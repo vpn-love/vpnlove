@@ -109,14 +109,14 @@ const VPNPage = observer(() => {
                       text={`Сайт ${vpnDescr.name}`}
                       icon={
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <g clip-path="url(#clip0_424_11983)">
+                          <g clipPath="url(#clip0_424_11983)">
                             <path
                               d="M8.66658 7.33331L14.1333 1.86665M14.6666 4.53331V1.33331H11.4666M7.33325 1.33331H5.99992C2.66659 1.33331 1.33325 2.66665 1.33325 5.99998V9.99998C1.33325 13.3333 2.66659 14.6666 5.99992 14.6666H9.99992C13.3333 14.6666 14.6666 13.3333 14.6666 9.99998V8.66665"
                               stroke="white"
                               strokeOpacity="0.9"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                             />
                           </g>
                           <defs>

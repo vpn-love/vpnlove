@@ -40,6 +40,16 @@
           margin: 0;
           padding: 10px 20px;
 
+          &:focus {
+            &::placeholder {
+              opacity: 0.4;
+            }
+
+            &::-ms-input-placeholder {
+              opacity: 0.4;
+            }
+          }
+
           &:hover {
             cursor: pointer;
           }
@@ -86,7 +96,6 @@
 
       .optionListContainer {
         margin-top: 13px;
-        margin-left: -21px;
         width: 370px;
         background: none;
 
@@ -98,6 +107,10 @@
           background: var(--button-background-color);
           border-radius: 20px;
           box-shadow: 0px 1.26875px 4.625px 0px rgba(1, 16, 53, 0.03), 0px 5.8px 13px 0px rgba(1, 16, 53, 0.05), 0px 14.68125px 34.875px 0px rgba(1, 16, 53, 0.07);
+
+          .notFound {
+            padding: 10px 20px;
+          }
 
           li {
             font-size: 16px;
