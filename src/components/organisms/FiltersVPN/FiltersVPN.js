@@ -7,7 +7,8 @@ import './FiltersVPN.scss';
 
 const FiltersVPN = observer(() => {
   const { countriesList, platformsList, paymentMethodsList } = FiltersStore;
-  const { selectedPaymentMethods, selectedPlatforms, selectedCountries } = VPNsStore;
+  const { selectedPaymentMethods, selectedPlatforms, selectedCountries, RFAvailable } = VPNsStore;
+  const [stateRFAvailable, setStateRFAvailable] = useState(RFAvailable);
   const deleteFilter = (key, filter) => {
     let list = [];
     switch (filter) {
@@ -27,6 +28,8 @@ const FiltersVPN = observer(() => {
         VPNsStore.selectedCountries = list;
         VPNsStore.selectedPaymentMethods = list;
         VPNsStore.selectedPlatforms = list;
+        setStateRFAvailable(false);
+        VPNsStore.RFAvailable = false;
         break;
       default:
         break;
@@ -93,6 +96,29 @@ const FiltersVPN = observer(() => {
           hideSelectedList={true}
           className={`filter__item filter-countries ${selectedCountries.length > 0 ? 'active' : ''}`}
         />
+        <div
+          className={`filter__item filter-rf ${stateRFAvailable ? 'active' : ''}`}
+          onClick={() => {
+            setStateRFAvailable(!stateRFAvailable);
+            VPNsStore.RFAvailable = !stateRFAvailable;
+            VPNsStore.filterVPN();
+          }}
+        >
+          <span>Доступно в РФ</span>
+          {stateRFAvailable && (
+            <div className="filter__item-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M9.17 14.83L14.83 9.17M14.83 14.83L9.17 9.17M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                  stroke="#550CE9"
+                  sstrokewidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+          )}
+        </div>
       </div>
       {(selectedPlatforms.length > 0 || selectedCountries.length > 0 || selectedPaymentMethods.length > 0) && (
         <div className="filters_selected__list">

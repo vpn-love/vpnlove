@@ -94,6 +94,16 @@
         }
       }
 
+      &.filter-rf {
+        padding: 10px 20px;
+        display: flex;
+        gap: 10px;
+
+        .filter__item-close {
+          height: 24px;
+        }
+      }
+
       .optionListContainer {
         margin-top: 13px;
         width: 370px;

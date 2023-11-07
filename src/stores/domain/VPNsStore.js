@@ -52,6 +52,7 @@ class VPNsStore {
   _selectedPaymentMethods = [];
   _selectedPlatforms = [];
   _selectedCountries = [];
+  _RFAvailable = false;
   get vpnsData() {
     return this._vpnsData;
   }
@@ -79,6 +80,10 @@ class VPNsStore {
   get selectedCountries() {
     return this._selectedCountries;
   }
+
+  get RFAvailable() {
+    return this._RFAvailable;
+  }
   set vpnDescr(value) {
     this._vpnDescr = value;
   }
@@ -94,6 +99,10 @@ class VPNsStore {
   }
   set selectedCountries(value) {
     this._selectedCountries = value;
+  }
+
+  set RFAvailable(value) {
+    this._RFAvailable = value;
   }
 
   filterVPN = () => {
@@ -152,10 +161,23 @@ class VPNsStore {
       });
     }
 
+    if (this._RFAvailable) {
+      listFiltered = [];
+      this._vpnsDataFiltered.forEach((vpn) => {
+        let isRFAvailable = vpn.cards.filter(function (val) {
+          return val.type === 'available_from_russia';
+        })[0].state;
+        if (isRFAvailable) {
+          listFiltered.push(vpn);
+        }
+      });
+    }
+
     if (
       this._selectedPaymentMethods.length !== 0 ||
       this._selectedCountries.length !== 0 ||
-      this._selectedPlatforms.length !== 0
+      this._selectedPlatforms.length !== 0 ||
+      this._RFAvailable
     ) {
       this._vpnsDataFiltered = listFiltered.sort(function (a, b) {
         return a.index - b.index;
