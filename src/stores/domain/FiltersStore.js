@@ -1,11 +1,8 @@
-import { runInAction, makeAutoObservable } from 'mobx';
-import VPNService from './../VPNService';
-import { toJS } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
 class FilterStore {
   constructor() {
     makeAutoObservable(this);
-    this.vpnService = new VPNService();
   }
   _platformsList = [];
   _paymentMethodsList = [];
@@ -25,54 +22,18 @@ class FilterStore {
     return this._isLoaded;
   }
 
-  getFilters = () => {
-    this.getFilterPlatformsAsync();
-    this.getFilterPaymentAsync();
-    this.getFilterCountriesAsync();
-  };
-
-  getFilterPlatformsAsync = async () => {
-    try {
-      const data = await this.vpnService.get('platforms');
-      runInAction(() => {
-        this._platformsList = data;
-        this._isLoaded = true;
-      });
-    } catch (error) {
-      runInAction(() => {
-        this._status = 'error';
-        this._isLoaded = false;
-      });
-    }
-  };
-  getFilterCountriesAsync = async () => {
-    try {
-      const data = await this.vpnService.get('countries');
-      runInAction(() => {
-        this._countriesList = data;
-        this._isLoaded = true;
-      });
-    } catch (error) {
-      runInAction(() => {
-        this._status = 'error';
-        this._isLoaded = false;
-      });
-    }
-  };
-  getFilterPaymentAsync = async () => {
-    try {
-      const data = await this.vpnService.get('payment-methods');
-      runInAction(() => {
-        this._paymentMethodsList = data;
-        this._isLoaded = true;
-      });
-    } catch (error) {
-      runInAction(() => {
-        this._status = 'error';
-        this._isLoaded = false;
-      });
-    }
-  };
+  set platformsList(list) {
+    this._platformsList = list;
+  }
+  set paymentMethodsList(list) {
+    this._paymentMethodsList = list;
+  }
+  set countriesList(list) {
+    this._countriesList = list;
+  }
+  set isLoaded(isLoaded) {
+    this._isLoaded = isLoaded;
+  }
 }
 
 export default new FilterStore();

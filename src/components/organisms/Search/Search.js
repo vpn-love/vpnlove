@@ -4,12 +4,13 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Input } from './../../atoms';
 import cn from 'classnames';
-import { SearchStore } from '../../../stores/';
+import { SearchStore, JSONStore } from '../../../stores/';
 
 import './Search.scss';
 
 const Search = () => {
   const { queryData } = SearchStore;
+  const { isJSONLoaded } = JSONStore;
   const navigate = useNavigate();
   const location = useLocation().pathname.replace('/', '');
 
@@ -19,11 +20,11 @@ const Search = () => {
   const [querySearch, setQuerySearch] = useState(queryData || linkQuerySearch);
 
   useEffect(() => {
-    if (location === 'search' && queryData === '') {
+    if (location === 'search' && queryData === '' && isJSONLoaded) {
       SearchStore.queryData = linkQuerySearch;
       SearchStore.getSearch();
     }
-  }, [location]);
+  }, [location, isJSONLoaded]);
 
   var wrapperClass = cn({
     search__wrapper: true,

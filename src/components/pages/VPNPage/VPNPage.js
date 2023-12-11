@@ -23,16 +23,15 @@ import { toJS } from 'mobx';
 
 const VPNPage = observer(() => {
   const params = useParams().vpn;
-  useEffect(() => {
-    if (params) VPNsStore.getVPNAsync(params);
-  }, [params]);
 
-  const { vpnDescr, vpnsData, isLoadedVPNData } = VPNsStore;
+  const { vpnsData, isLoadedVPNs, fullVpnsData } = VPNsStore;
   const vpnCount = vpnsData.length;
   const listPlatforms = ['Windows', 'MacOS', 'iOS', 'Android', 'Linux', 'SmartTV', 'Routers'];
 
-  const paymentMethods = vpnDescr ? vpnDescr.cards.find((element) => element.type === 'payment_methods') : null;
-  const priceVPN = vpnDescr ? vpnDescr.cards.find((element) => element.type === 'price') : null;
+  const paymentMethods = fullVpnsData[params]
+    ? fullVpnsData[params].cards.find((element) => element.type === 'payment_methods')
+    : null;
+  const priceVPN = fullVpnsData[params] ? fullVpnsData[params].cards.find((element) => element.type === 'price') : null;
 
   return (
     <>
@@ -41,58 +40,58 @@ const VPNPage = observer(() => {
       <div className="vpn-page page__wrapper">
         <div className="page__inner">
           <div className="categories">
-            {!isLoadedVPNData ? (
+            {!isLoadedVPNs ? (
               <Skeleton height={'100%'} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
             ) : (
               <>Обзоры</>
             )}
           </div>
           <div className="title title-50">
-            {!isLoadedVPNData ? (
+            {!isLoadedVPNs ? (
               <Skeleton height={'100%'} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
             ) : (
-              <>{vpnDescr.name}</>
+              <>{fullVpnsData[params].name}</>
             )}
           </div>
           <div className="description">
             <div className="description__logo">
-              {!isLoadedVPNData ? (
+              {!isLoadedVPNs ? (
                 <Skeleton height={'100%'} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
               ) : (
-                <img src={`${vpnDescr.iconUrl}`} />
+                <img src={`${fullVpnsData[params].iconUrl}`} />
               )}
             </div>
             <div className="description__text">
-              {!isLoadedVPNData ? (
+              {!isLoadedVPNs ? (
                 <Skeleton count={10} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
               ) : (
-                <div dangerouslySetInnerHTML={{ __html: marked.parse(vpnDescr.description) }} />
+                <div dangerouslySetInnerHTML={{ __html: marked.parse(fullVpnsData[params].description) }} />
               )}
             </div>
             <div className="description__rating">
               <div className="rating">
-                {!isLoadedVPNData ? (
+                {!isLoadedVPNs ? (
                   <Skeleton height={'100%'} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
                 ) : (
                   <>
                     <div className="rating__data">
-                      <span className="rating__value">{vpnDescr.rating}</span>
+                      <span className="rating__value">{fullVpnsData[params].rating}</span>
                       <span className="rating__full">/10</span>
                     </div>
                     <div className="rating__place">
-                      {vpnDescr.rank} место из {vpnCount}
+                      {fullVpnsData[params].rank} место из {vpnCount}
                     </div>
                   </>
                 )}
               </div>
               <div className="rating">
-                {!isLoadedVPNData ? (
+                {!isLoadedVPNs ? (
                   <Skeleton height={'100%'} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
                 ) : (
                   <>
                     <div className="rating__data">
-                      <span className="rating__full">{vpnDescr.currencySymbol}</span>
-                      <span className="rating__value">{vpnDescr.price}</span>
+                      <span className="rating__full">{fullVpnsData[params].currencySymbol}</span>
+                      <span className="rating__value">{fullVpnsData[params].price}</span>
                     </div>
                     <span className="rating__place">мин. цена</span>
                   </>
@@ -100,13 +99,13 @@ const VPNPage = observer(() => {
               </div>
             </div>
             <div className="description__footer">
-              {!isLoadedVPNData ? (
+              {!isLoadedVPNs ? (
                 <Skeleton height={'100%'} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
               ) : (
                 <>
                   <div className="block__buy-vpn">
                     <ButtonLink
-                      text={`Сайт ${vpnDescr.name}`}
+                      text={`Сайт ${fullVpnsData[params].name}`}
                       icon={
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <g clipPath="url(#clip0_424_11983)">
@@ -127,18 +126,20 @@ const VPNPage = observer(() => {
                         </svg>
                       }
                       url={
-                        priceVPN.partnerLink && priceVPN.partnerLink !== '' ? priceVPN.partnerLink : vpnDescr.website
+                        priceVPN.partnerLink && priceVPN.partnerLink !== ''
+                          ? priceVPN.partnerLink
+                          : fullVpnsData[params].website
                       }
                       externalURL={true}
                       align="center"
                       colored={true}
                       customClass="button_vpn-link"
                     />
-                    {vpnDescr.promocode && vpnDescr.discount > 0 && (
-                      <Promocode discount={vpnDescr.discount} promocode={vpnDescr.promocode} />
+                    {fullVpnsData[params].promocode && fullVpnsData[params].discount > 0 && (
+                      <Promocode discount={fullVpnsData[params].discount} promocode={fullVpnsData[params].promocode} />
                     )}
                   </div>
-                  {vpnDescr.recommended && (
+                  {fullVpnsData[params].recommended && (
                     <div className="border__wrapper block__rks-recommended">
                       <div className="rks-recommended ">
                         <div className="rks"></div>
@@ -150,11 +151,11 @@ const VPNPage = observer(() => {
               )}
             </div>
 
-            {!isLoadedVPNData ? (
+            {!isLoadedVPNs ? (
               <Skeleton height={'100%'} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
             ) : (
               <>
-                {vpnDescr.screenshots.length > 0 && (
+                {fullVpnsData[params].screenshots.length > 0 && (
                   <div className="description__images slider-vpn__wrapper">
                     <Swiper
                       modules={[Navigation, Scrollbar, A11y]}
@@ -163,7 +164,7 @@ const VPNPage = observer(() => {
                       navigation
                       // pagination={{ clickable: true }}
                     >
-                      {vpnDescr.screenshots.map((node, key) => {
+                      {fullVpnsData[params].screenshots.map((node, key) => {
                         return (
                           <SwiperSlide key={key}>
                             <img src={`${node.imageUrl}`} />
@@ -176,15 +177,15 @@ const VPNPage = observer(() => {
               </>
             )}
           </div>
-          {!isLoadedVPNData ? (
+          {!isLoadedVPNs ? (
             <Skeleton height={'100%'} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
           ) : (
-            <GeneralRating vpnDescr={vpnDescr} vpnCount={vpnCount} />
+            <GeneralRating vpnDescr={fullVpnsData[params]} vpnCount={vpnCount} />
           )}
 
           <div className="line"></div>
           <div className="vpn-rating__inner-details">
-            {!isLoadedVPNData ? (
+            {!isLoadedVPNs ? (
               <Skeleton height={'100%'} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
             ) : (
               <>
@@ -221,8 +222,11 @@ const VPNPage = observer(() => {
                       <div className="block__buy-vpn__price">
                         от {priceVPN.currencySymbol}
                         {priceVPN.value}
-                        {vpnDescr.promocode && vpnDescr.discount > 0 && (
-                          <Promocode discount={vpnDescr.discount} promocode={vpnDescr.promocode} />
+                        {fullVpnsData[params].promocode && fullVpnsData[params].discount > 0 && (
+                          <Promocode
+                            discount={fullVpnsData[params].discount}
+                            promocode={fullVpnsData[params].promocode}
+                          />
                         )}
                       </div>
 
@@ -230,7 +234,9 @@ const VPNPage = observer(() => {
                         text="Купить"
                         iconId="exportsquare"
                         url={
-                          priceVPN.partnerLink && priceVPN.partnerLink !== '' ? priceVPN.partnerLink : vpnDescr.website
+                          priceVPN.partnerLink && priceVPN.partnerLink !== ''
+                            ? priceVPN.partnerLink
+                            : fullVpnsData[params].website
                         }
                         externalURL={true}
                         align="center"
@@ -267,7 +273,7 @@ const VPNPage = observer(() => {
                   </div>
                 )}
 
-                {vpnDescr.cards
+                {fullVpnsData[params].cards
                   .filter(
                     (element) =>
                       element.rating != null && element.type !== 'payment_methods' && element.type !== 'price'
@@ -332,7 +338,7 @@ const VPNPage = observer(() => {
                     );
                   })}
 
-                {vpnDescr.cards
+                {fullVpnsData[params].cards
                   .filter((element) => typeof element.rating == 'undefined' && element.type !== 'payment_methods')
                   .map((element) => {
                     return (

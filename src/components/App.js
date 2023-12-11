@@ -9,15 +9,11 @@ import RatingPage from './pages/RatingPage/RatingPage';
 import VPNPage from './pages/VPNPage/VPNPage';
 import Sitemap from './Sitemap';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
-import { BannersStore, PostsStore, VPNsStore, FiltersStore } from '../stores/';
+import { JSONStore } from '../stores/';
 
 const App = () => {
-  BannersStore.getBannersListAsync();
-  PostsStore.getPostsAsync();
-  VPNsStore.getVPNsAsync();
-  PostsStore.getTopRatedAsync();
-  PostsStore.getCategoriesAsync();
-  FiltersStore.getFilters();
+  JSONStore.getJSONData();
+
   return (
     <div className="wrapper" id="wrapper">
       <>

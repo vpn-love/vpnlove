@@ -16,12 +16,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 const PostsPage = observer(() => {
   const params = useParams().newsName;
-
-  useEffect(() => {
-    PostsStore.getPostAsync(params);
-  }, [params]);
-
-  const { post, isLoadedPost } = PostsStore;
+  const { fullPostsData, isLoadedPosts } = PostsStore;
 
   return (
     <>
@@ -29,37 +24,37 @@ const PostsPage = observer(() => {
       <Navigator />
       <div className="news-page page__wrapper news-page__article">
         <div className="page__inner">
-          {isLoadedPost ? (
-            <Categories list={post.categories} />
+          {isLoadedPosts ? (
+            <Categories list={fullPostsData[params].categories} />
           ) : (
             <Skeleton height={'100%'} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
           )}
 
           <div className="news-page__title title-50">
-            {isLoadedPost ? (
-              <> {post.title}</>
+            {isLoadedPosts ? (
+              <> {fullPostsData[params].title}</>
             ) : (
               <Skeleton height={'100%'} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
             )}
           </div>
           <div className="news-page__img">
-            {isLoadedPost ? (
-              <img src={post.imageUrl} />
+            {isLoadedPosts ? (
+              <img src={fullPostsData[params].imageUrl} />
             ) : (
               <Skeleton count={10} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
             )}
           </div>
           <div className="news-page__content">
-            {isLoadedPost ? (
+            {isLoadedPosts ? (
               <>
-                <div className="news_page__lead">{post.shortDescription}</div>
+                <div className="news_page__lead">{fullPostsData[params].shortDescription}</div>
                 <div className="line"></div>
               </>
             ) : (
               <Skeleton count={4} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
             )}
 
-            {isLoadedPost && post.shopBanner && (
+            {isLoadedPosts && fullPostsData[params].shopBanner && (
               <div className="news-page__short__banner">
                 <div className="details-item background">
                   <div className="details-item__header">
@@ -67,9 +62,13 @@ const PostsPage = observer(() => {
                   </div>
 
                   <div className="details-item__description">
-                    {post.shopBanner.description && (
+                    {fullPostsData[params].shopBanner.description && (
                       <div className="details-item__description">
-                        <div dangerouslySetInnerHTML={{ __html: marked.parse(post.shopBanner.description) }} />
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: marked.parse(fullPostsData[params].shopBanner.description)
+                          }}
+                        />
                       </div>
                     )}
 
@@ -77,14 +76,14 @@ const PostsPage = observer(() => {
 
                     <div className="block__buy-vpn">
                       <div className="block__buy-vpn__price">
-                        {post.shopBanner.cost} {post.shopBanner.currencySymbol}/
-                        {post.shopBanner.durationUnitVerbose.toLowerCase()}
+                        {fullPostsData[params].shopBanner.cost} {fullPostsData[params].shopBanner.currencySymbol}/
+                        {fullPostsData[params].shopBanner.durationUnitVerbose.toLowerCase()}
                       </div>
                       <div className="">
                         <ButtonLink
                           text="Купить"
                           iconId="exportsquare"
-                          url={post.shopBanner.url}
+                          url={fullPostsData[params].shopBanner.url}
                           externalURL={true}
                           align="center"
                           colored={true}
@@ -99,8 +98,8 @@ const PostsPage = observer(() => {
             )}
 
             <div className="news-page__text" id="textPost">
-              {isLoadedPost ? (
-                <div dangerouslySetInnerHTML={{ __html: marked.parse(post.content) }} />
+              {isLoadedPosts ? (
+                <div dangerouslySetInnerHTML={{ __html: marked.parse(fullPostsData[params].content) }} />
               ) : (
                 <Skeleton count={10} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
               )}

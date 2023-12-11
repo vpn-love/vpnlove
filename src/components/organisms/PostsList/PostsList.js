@@ -11,6 +11,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 const PostsList = observer((props) => {
   const { postsData, isLoadedPosts } = PostsStore;
   const listPost = props && props.posts ? props.posts : postsData;
+
   const [showPosts, setShowPost] = useState(5);
   return (
     <div className="news-list__inner">

@@ -1,11 +1,9 @@
-import { runInAction, makeAutoObservable, action } from 'mobx';
-import VPNService from './../VPNService';
-import { toJS } from 'mobx';
+import { makeAutoObservable } from 'mobx';
+import { JSONStore } from '../';
 
 class SearchStore {
   constructor() {
     makeAutoObservable(this);
-    this.vpnService = new VPNService();
   }
   _queryData = '';
   _answerData = [];
@@ -28,60 +26,19 @@ class SearchStore {
   }
 
   getSearch = async () => {
-    let param = 'query=' + this._queryData;
     this._status = 'load';
     this._answerData = [];
-    try {
-      const data = await this.vpnService.get('search', param);
-      runInAction(() => {
-        this._answerData = data;
-        this._status = 'loaded';
+    Object.values(JSONStore.JSONData.posts)
+      .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
+      .forEach((post) => {
+        if (
+          post.title.toLowerCase().includes(this._queryData.toLowerCase()) ||
+          post.shortDescription.toLowerCase().includes(this._queryData.toLowerCase())
+        ) {
+          this._answerData.push(post);
+        }
       });
-    } catch (error) {
-      runInAction(() => {
-        this._status = 'error';
-      });
-    }
-  };
-
-  getPostsAsync = async () => {
-    try {
-      const data = await this.vpnService.get('posts');
-      runInAction(() => {
-        this._postsData = data;
-      });
-    } catch (error) {
-      runInAction(() => {
-        this._status = 'error';
-      });
-    }
-  };
-
-  getTopRatedAsync = async () => {
-    try {
-      const data = await this.vpnService.get('top-rated');
-      runInAction(() => {
-        this._topRatedData = data;
-      });
-    } catch (error) {
-      runInAction(() => {
-        this._status = 'error';
-      });
-    }
-  };
-
-  getPostAsync = async (params) => {
-    try {
-      const target = 'posts/' + params;
-      const data = await this.vpnService.get(target);
-      runInAction(() => {
-        this._post = data;
-      });
-    } catch (error) {
-      runInAction(() => {
-        this._status = 'error';
-      });
-    }
+    this._status = 'loaded';
   };
 }
 

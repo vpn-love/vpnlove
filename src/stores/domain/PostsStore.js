@@ -1,61 +1,64 @@
-import { runInAction, makeAutoObservable, action } from 'mobx';
-import VPNService from './../VPNService';
-import { toJS } from 'mobx';
-
-// ------ POST MODEL ------
-// absoluteUrl: "http://dev.vpnlove.me/api/posts/surfshark-block/"
-// categories: {name: 'Новости', slug: 'news'}
-// content: ""
-// createdAt: "2022-12-26T15:44:15.297105Z"
-// id: 2
-// shortDescription: ""
-// slug: "surfshark-block"
-// title: ""
-// updatedAt: "2022-12-27T20:08:00.769500Z"
-// image : ''
-// published: true
-// ------ END POST MODEL -------
+import { makeAutoObservable, toJS } from 'mobx';
 
 class PostsStore {
   constructor() {
     makeAutoObservable(this);
-    this.vpnService = new VPNService();
   }
-  _postsData = [];
+  _postsData = {};
   _topRatedData = [];
   _categoriesData = [];
   _allPost = [];
-  _post = null;
   _isLoadedPosts = false;
-  _isLoadedCategories = false;
   _isLoadedTop = false;
   _isLoadedPost = false;
 
   get postsData() {
+    return Object.values(this._postsData).sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+  }
+
+  get fullPostsData() {
     return this._postsData;
   }
+
+  set postsData(list) {
+    this._postsData = list;
+  }
+
   get categoriesData() {
     return this._categoriesData;
+  }
+
+  set categoriesData(list) {
+    list.forEach((element) => {
+      let el = element;
+      el.posts = element.posts.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+      return el;
+    });
+    this._categoriesData = list;
   }
 
   get topRatedData() {
     return this._topRatedData;
   }
 
-  get post() {
-    return this._post;
+  set topRatedData(list) {
+    this._topRatedData = list.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
   }
 
   get isLoadedPosts() {
     return this._isLoadedPosts;
   }
 
-  get isLoadedCategories() {
-    return this._isLoadedCategories;
+  set isLoadedPosts(isLoadedPosts) {
+    this._isLoadedPosts = isLoadedPosts;
   }
 
   get isLoadedTop() {
     return this._isLoadedTop;
+  }
+
+  set isLoadedTop(isLoadedTop) {
+    this._isLoadedTop = isLoadedTop;
   }
 
   get isLoadedPost() {
@@ -67,71 +70,6 @@ class PostsStore {
   set post(value) {
     this._post = value;
   }
-
-  getCategoriesAsync = async () => {
-    try {
-      const data = await this.vpnService.get('categories');
-      runInAction(() => {
-        data.forEach((element) => {
-          return (element.posts = element.posts.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1)));
-        });
-        this._categoriesData = data;
-        this._isLoadedCategories = true;
-      });
-    } catch (error) {
-      runInAction(() => {
-        this._status = 'error';
-        this._isLoadedCategories = false;
-      });
-    }
-  };
-
-  getPostsAsync = async () => {
-    try {
-      const data = await this.vpnService.get('posts');
-      runInAction(() => {
-        this._postsData = data.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
-
-        this._isLoadedPosts = true;
-      });
-    } catch (error) {
-      runInAction(() => {
-        this._status = 'error';
-        this._isLoadedPosts = false;
-      });
-    }
-  };
-
-  getTopRatedAsync = async () => {
-    try {
-      const data = await this.vpnService.get('top-rated');
-      runInAction(() => {
-        this._topRatedData = data.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
-        this._isLoadedTop = true;
-      });
-    } catch (error) {
-      runInAction(() => {
-        this._status = 'error';
-        this._isLoadedTop = false;
-      });
-    }
-  };
-
-  getPostAsync = async (params) => {
-    try {
-      const target = 'posts/' + params;
-      const data = await this.vpnService.get(target);
-      runInAction(() => {
-        this._post = data;
-        this._isLoadedPost = true;
-      });
-    } catch (error) {
-      runInAction(() => {
-        this._status = 'error';
-        this._isLoadedPost = false;
-      });
-    }
-  };
 }
 
 export default new PostsStore();
