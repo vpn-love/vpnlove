@@ -8,7 +8,7 @@ import PostsListPage from './pages/PostsPage/PostsListPage';
 import RatingPage from './pages/RatingPage/RatingPage';
 import VPNPage from './pages/VPNPage/VPNPage';
 import Sitemap from './Sitemap';
-import ErrorPage from './pages/ErrorPage/ErrorPage';
+// import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { JSONStore } from '../stores/';
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
       <>
         <Routes>
           <Route path="/" element={<MainPage />} sitemapIndex="true" priority="1" />
-          <Route path="*" element={<ErrorPage />} />
+          {/* <Route path="*" element={<ErrorPage />} /> */}
           <Route path="/index.html" element={<MainPage />} sitemapIndex="true" priority="1" />
           <Route path="/about" element={<AboutPage />} sitemapIndex="true" priority="1" />
           <Route path="/alternatives" element={<AlternativeVPNPage />} sitemapIndex="true" priority="1" />
