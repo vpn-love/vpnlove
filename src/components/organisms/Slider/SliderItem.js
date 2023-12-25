@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './Slider.scss';
 
 const SliderItem = (props) => {
-  const { title, url, image, description, backgroundColor, linkText } = props.item;
+  const { title, url, imageUrl, description, backgroundColor, linkText } = props.item;
   return (
     <div className="slider_item banner background" style={{ backgroundColor: `${backgroundColor}` }}>
       <a href={url} className="banner__link-el">
@@ -12,7 +12,7 @@ const SliderItem = (props) => {
           <div className="banner__link">{linkText}&nbsp;&rarr;</div>
         </div>
         {/* <image src={require(`../../../images/${image}`)} /> */}
-        <img src={image} />
+        <img src={imageUrl} alt="" />
       </a>
     </div>
   );
