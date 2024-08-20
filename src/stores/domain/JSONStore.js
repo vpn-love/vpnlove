@@ -9,7 +9,7 @@ class JSONStore {
   _JSONData = {};
   _isJSONLoaded = false;
   _apiURL = window.location.href.includes('localhost')
-    ? 'https://storage.googleapis.com/vpnlove/database.json'
+    ? 'https://vpnlove.org/vpnlove/database.json'
     : '/vpnlove/database.json';
   get JSONData() {
     return this._JSONData;

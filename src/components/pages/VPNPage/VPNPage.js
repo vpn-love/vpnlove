@@ -50,7 +50,12 @@ const VPNPage = observer(() => {
             {!isLoadedVPNs ? (
               <Skeleton height={'100%'} baseColor="#f5f5f5" highlightColor="#fff" className="transition_skeleton" />
             ) : (
-              <>{fullVpnsData[params].name}</>
+              <>
+                {fullVpnsData[params].name}
+                {fullVpnsData[params].name.toLowerCase().includes('amnezia') && (
+                  <div className="vpn-list__item-name__recommend">Рекомендуем</div>
+                )}
+              </>
             )}
           </div>
           <div className="description">

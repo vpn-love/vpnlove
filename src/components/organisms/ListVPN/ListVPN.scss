@@ -90,6 +90,19 @@
     font-size: 20px;
     line-height: 30px;
     font-weight: 700;
+
+    &__recommend {
+      display: inline-block;
+      border-radius: 5px;
+      border: 1px solid #e7d350;
+      color: #97550e;
+      padding: 4px;
+      line-height: 1em;
+      font-size: 11px;
+      font-weight: 400;
+      vertical-align: middle;
+      // margin-left: 14px;
+    }
   }
 
   &-rating {
@@ -106,6 +119,10 @@
     color: var(--color-50b);
     font-size: 16px;
     line-height: 150%;
+  }
+
+  &.recommend {
+    background-color: #fefbe8;
   }
 }
 
@@ -198,7 +215,7 @@
       &-rating {
         font-size: 13px;
         position: absolute;
-        right: 0;
+        right: 5px;
         bottom: -2px;
 
         .rating_value {
@@ -247,6 +264,15 @@
   }
 }
 
+@media (min-width: 400px) {
+  .vpn-list__item {
+    &-name {
+      &__recommend {
+        margin-left: 14px;
+      }
+    }
+  }
+}
 
 @media (min-width: 768px) {
 
@@ -287,6 +313,10 @@
 
     &-name {
       font-size: 28px;
+
+      &__recommend {
+        font-size: 13px;
+      }
     }
 
     &-logo {
