@@ -6,8 +6,9 @@ const List = (props) => {
   const { item } = props;
   const availableFromRussia = item.cards.find(({ type }) => type === 'available_from_russia');
 
+  const isAmneziaVpn = item.name.toLowerCase().includes('amnezia');
   return (
-    <Link to={`/rating/${item.slug}`} className="vpn-list__item">
+    <Link to={`/rating/${item.slug}`} className={`vpn-list__item ${isAmneziaVpn ? 'recommend' : ''}`}>
       <div className="vpn-list__item-number">{item.index}</div>
 
       <div className="vpn-list__item-content">
@@ -19,6 +20,7 @@ const List = (props) => {
             <div className="vpn-list__item-name-block">
               <div className="vpn-list__item-name">
                 {item.name}
+                {isAmneziaVpn && <div className="vpn-list__item-name__recommend">Рекомендуем</div>}
                 {!availableFromRussia.state && (
                   <div className="vpn-list__item-russia_disabled">
                     <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">

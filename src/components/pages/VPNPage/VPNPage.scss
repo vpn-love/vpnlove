@@ -17,7 +17,12 @@
 
   .title {
     margin-bottom: 20px;
+  }
 
+  .vpn-list__item-name__recommend {
+    margin-left: 14px;
+    vertical-align: top;
+    margin-top: 4px;
   }
 
   .description {
@@ -26,11 +31,13 @@
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
+
     // .slider-vpn__wrapper  {
     //   max-height: 435px;
-      .swiper {
-        height: 435px;
-      }
+    .swiper {
+      height: 435px;
+    }
+
     // }
     &__text {
       margin-bottom: 30px;
@@ -156,11 +163,16 @@
 
       .swiper {
         height: 570px;
+
         img {
           max-height: 100%;
         }
 
       }
+    }
+
+    .vpn-list__item-name__recommend {
+      margin-top: 5px;
     }
 
     .description {
